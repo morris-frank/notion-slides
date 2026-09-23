@@ -8,6 +8,7 @@
   <strong>Convert Notion-style Markdown into a themed <code>.pptx</code> deck: titles, bullets, code, math, callouts and images.</strong>
   <br>
   <br>
+  <a href="https://www.npmjs.com/package/notion-slides"><img src="https://img.shields.io/npm/v/notion-slides?style=flat-square&amp;color=2F6FEB&amp;labelColor=1F2328" alt="npm version"></a>
   <img src="https://img.shields.io/badge/node-%E2%89%A518-2F6FEB?style=flat-square&amp;labelColor=1F2328" alt="Node 18+">
   <img src="https://img.shields.io/badge/output-.pptx-2F6FEB?style=flat-square&amp;labelColor=1F2328" alt="pptx output">
   <a href="theme.light.json"><img src="https://img.shields.io/badge/themes-light%20%2B%20dark-2F6FEB?style=flat-square&amp;labelColor=1F2328" alt="Light and dark themes"></a>

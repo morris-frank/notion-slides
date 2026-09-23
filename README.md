@@ -8,54 +8,32 @@
   <strong>Convert Notion-style Markdown into a themed <code>.pptx</code> deck: titles, bullets, code, math, callouts and images.</strong>
   <br>
   <br>
-  <img src="https://img.shields.io/badge/node-%E2%89%A518-8EDE3D?style=flat-square&amp;labelColor=16211B" alt="Node 18+">
-  <img src="https://img.shields.io/badge/output-.pptx-8EDE3D?style=flat-square&amp;labelColor=16211B" alt="pptx output">
-  <a href="theme.light.json"><img src="https://img.shields.io/badge/themes-light%20%2B%20dark-1AB172?style=flat-square&amp;labelColor=16211B" alt="Light and dark themes"></a>
+  <img src="https://img.shields.io/badge/node-%E2%89%A518-2F6FEB?style=flat-square&amp;labelColor=1F2328" alt="Node 18+">
+  <img src="https://img.shields.io/badge/output-.pptx-2F6FEB?style=flat-square&amp;labelColor=1F2328" alt="pptx output">
+  <a href="theme.light.json"><img src="https://img.shields.io/badge/themes-light%20%2B%20dark-2F6FEB?style=flat-square&amp;labelColor=1F2328" alt="Light and dark themes"></a>
 </p>
 
 <br clear="left">
 
-Ships with Soilytix light/dark themes (`theme.light.json`, `theme.dark.json`) and matching `logo.light.png` / `logo.dark.png` in the repo root.
+Ships with unbranded light and dark themes (`theme.light.json`, `theme.dark.json`).
 
 **Requirements:** [Node.js](https://nodejs.org/) 18+ (for `fetch`).
 
-## One-shot install (curl + PATH)
-
-This downloads the latest `main` tree, installs npm dependencies, and links the CLI into `~/.local/bin` (adjust `INSTALL_DIR` / `BIN_DIR` if you prefer).
+## Install
 
 ```bash
-INSTALL_DIR="${INSTALL_DIR:-$HOME/.local/share/notion-slides}" \
-BIN_DIR="${BIN_DIR:-$HOME/.local/bin}" \
-REPO_TGZ="https://github.com/morris-frank/notion-slides/archive/refs/heads/main.tar.gz" \
-&& TMP="$(mktemp -d)" && trap 'rm -rf "$TMP"' EXIT \
-&& curl -fsSL "$REPO_TGZ" | tar -xz -C "$TMP" \
-&& rm -rf "$INSTALL_DIR" \
-&& mv "$TMP/notion-slides-main" "$INSTALL_DIR" \
-&& (cd "$INSTALL_DIR" && npm ci --omit=dev) \
-&& mkdir -p "$BIN_DIR" \
-&& ln -sf "$INSTALL_DIR/notion-slides.mjs" "$BIN_DIR/notion-slides" \
-&& chmod +x "$INSTALL_DIR/notion-slides.mjs" \
-&& echo "Installed to $INSTALL_DIR — ensure PATH includes $BIN_DIR, e.g. export PATH=\"$BIN_DIR:\$PATH\""
+npm install -g notion-slides
 ```
 
-Themes and logos live next to the CLI in `INSTALL_DIR`; pass **`--theme`** as an absolute path, or run from that directory:
-
-```bash
-export PATH="$HOME/.local/bin:$PATH"
-notion-slides deck.md \
-  --theme "$HOME/.local/share/notion-slides/theme.light.json" \
-  --out deck.pptx
-```
-
-For the dark theme, use `theme.dark.json` instead.
+Or run without installing: `npx notion-slides deck.md --theme light --out deck.pptx`.
 
 ## Usage (quick)
 
 ```bash
-node notion-slides.mjs input.md --theme theme.light.json --out output.pptx
+notion-slides input.md --theme light --out output.pptx
 ```
 
-Flags include `--theme`, `--out`, `--cache <dir>`, `--offline`, `--debug-layout`.
+`--theme` takes `light`, `dark` (bundled, unbranded) or a path to your own theme JSON; a custom theme picks up `logo.light.png` / `logo.dark.png` (or `logo.png`) from its own directory unless the theme sets `"headerFooter": { "logo": false }`. Other flags: `--out`, `--cache <dir>`, `--offline`, `--debug-layout`.
 
 ## Working with Notion
 
@@ -77,6 +55,5 @@ Flags include `--theme`, `--out`, `--cache <dir>`, `--offline`, `--debug-layout`
 |------|------|
 | `notion-slides.mjs` | CLI |
 | `theme.light.json` / `theme.dark.json` | Layout, colors, header/footer copy |
-| `logo.light.png` / `logo.dark.png` | Header logo (theme picks by light/dark) |
 | `examples/` | Sample Markdown |
 

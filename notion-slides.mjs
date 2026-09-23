@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 /**
- * Notion-style markdown → PowerPoint (single-file CLI). See spec.md.
- * Usage: node notion-slides.mjs input.md --theme theme.light.json --out output.pptx
+ * Notion-style markdown → PowerPoint (single-file CLI).
+ * Usage: notion-slides input.md --theme light --out output.pptx
  */
 
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { createRequire } from 'module';
+import { fileURLToPath } from 'url';
 import MarkdownIt from 'markdown-it';
 import PptxGenJS from 'pptxgenjs';
 
@@ -38,11 +39,13 @@ function parseArgs(argv) {
     else if (!a.startsWith('-')) rest.push(a);
     else throw new Error(`Unknown flag: ${a}`);
   }
-  if (rest.length < 1) throw new Error('Usage: node notion-slides.mjs input.md --theme theme.light.json --out output.pptx');
+  if (rest.length < 1) throw new Error('Usage: node notion-slides.mjs input.md --theme light|dark|theme.json --out output.pptx');
   out.input = path.resolve(rest[0]);
-  if (!out.theme) throw new Error('Missing --theme theme.light.json');
+  if (!out.theme) throw new Error('Missing --theme (light, dark, or path to theme.json)');
   if (!out.output) throw new Error('Missing --out output.pptx');
-  out.theme = path.resolve(out.theme);
+  // Bare "light"/"dark" pick the bundled theme next to this script.
+  const bundled = new URL(`theme.${out.theme}.json`, import.meta.url);
+  out.theme = /^(light|dark)$/.test(out.theme) ? fileURLToPath(bundled) : path.resolve(out.theme);
   out.output = path.resolve(out.output);
   return out;
 }
@@ -761,6 +764,7 @@ function isDarkThemeStyle(theme, themePath) {
  * then the opposite mode as last resort.
  */
 function resolveLogoPath(themeDir, theme, themePath) {
+  if (theme?.headerFooter?.logo === false) return null;
   const dark = isDarkThemeStyle(theme, themePath);
   const mode = dark ? 'dark' : 'light';
   const other = dark ? 'light' : 'dark';

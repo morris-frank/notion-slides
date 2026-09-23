@@ -1,23 +1,31 @@
 {
   "name": "notion-slides",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "example": "examples"
+  "description": "Convert Notion-style Markdown into a themed .pptx deck: titles, bullets, code, math, callouts and images.",
+  "keywords": ["notion", "markdown", "pptx", "powerpoint", "slides", "cli"],
+  "homepage": "https://github.com/morris-frank/notion-slides#readme",
+  "bugs": "https://github.com/morris-frank/notion-slides/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morris-frank/notion-slides.git"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pptx": "node notion-slides.mjs",
-    "sample": "node notion-slides.mjs examples/sample-deck.md --theme theme.light.json --out output.pptx"
-  },
+  "license": "ISC",
+  "author": "Maurice Frank",
   "bin": {
     "notion-slides": "notion-slides.mjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "files": [
+    "notion-slides.mjs",
+    "theme.light.json",
+    "theme.dark.json"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "pptx": "node notion-slides.mjs",
+    "sample": "node notion-slides.mjs examples/sample-deck.md --theme light --out output.pptx"
+  },
   "dependencies": {
     "markdown-it": "^14.1.1",
     "mathjax-full": "^3.2.1",

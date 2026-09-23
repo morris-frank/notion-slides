@@ -1,23 +1,29 @@
 {
-  "meta": { "name": "Soilytix - Dark", "version": 1 },
-  "slide": { "layout": "LAYOUT_WIDE", "background": "#29322E" },
+  "meta": {
+    "name": "Dark",
+    "version": 1
+  },
+  "slide": {
+    "layout": "LAYOUT_WIDE",
+    "background": "#0D1117"
+  },
   "colors": {
-    "dk1": "#29322E",
-    "dk2": "#423B2D",
-    "lt1": "#FEFFFF",
-    "lt2": "#F5F2EF",
-    "accent1": "#87EA21",
-    "accent2": "#B1813E",
-    "accent3": "#3E4641",
-    "accent4": "#212121",
-    "accent5": "#A02B93",
-    "accent6": "#4EA72E",
-    "hlink": "#467886",
-    "folHlink": "#96607D"
+    "dk1": "#E6EDF3",
+    "dk2": "#9198A1",
+    "lt1": "#0D1117",
+    "lt2": "#161B22",
+    "accent1": "#4493F8",
+    "accent2": "#9A6700",
+    "accent3": "#57606A",
+    "accent4": "#1F2328",
+    "accent5": "#8250DF",
+    "accent6": "#1A7F37",
+    "hlink": "#4493F8",
+    "folHlink": "#8250DF"
   },
   "fonts": {
-    "title": "Inter",
-    "body": "Inter",
+    "title": "Aptos Display",
+    "body": "Aptos",
     "mono": "Aptos Mono",
     "fallbackSans": "Aptos",
     "fallbackDisplay": "Aptos Display"
@@ -54,37 +60,38 @@
     "titleSlideAlign": "center"
   },
   "headerFooter": {
-    "footerCenter": "© Soilytix GmbH - Confidential. All rights reserved. Do not distribute without authorization.",
+    "footerCenter": "",
     "footerFontPt": 9,
-    "footerColor": "#F5F2EF",
+    "footerColor": "#9198A1",
     "footerMiddleFraction": 0.6,
     "footerRemainderLeftFraction": 0.62,
     "logoMaxHeight": 0.38,
     "logoSlotWidth": 1.05,
-    "logoTitleGap": 0.1
+    "logoTitleGap": 0.1,
+    "logo": false
   },
   "text": {
-    "titleColor": "#FEFFFF",
-    "bodyColor": "#FEFFFF",
-    "mutedColor": "#F5F2EF",
-    "inlineCodeColor": "#FEFFFF",
-    "linkColor": "#467886"
+    "titleColor": "#E6EDF3",
+    "bodyColor": "#E6EDF3",
+    "mutedColor": "#9198A1",
+    "inlineCodeColor": "#E6EDF3",
+    "linkColor": "#4493F8"
   },
   "blocks": {
     "callout": {
-      "fill": "#3E4641",
-      "border": "#B1813E",
+      "fill": "#161B22",
+      "border": "#3D444D",
       "borderWidth": 1.5,
       "radius": 0.12
     },
     "code": {
-      "fill": "#212121",
-      "border": "#3E4641",
+      "fill": "#161B22",
+      "border": "#3D444D",
       "borderWidth": 1,
       "radius": 0.08
     },
     "inlineCode": {
-      "fill": "#3E4641"
+      "fill": "#262C36"
     }
   },
   "emojiMap": {}

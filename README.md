@@ -15,7 +15,7 @@
 
 <br clear="left">
 
-Ships with Soilytix light/dark themes (`theme.light.json`, `theme.dark.json`) and matching `logo.light.png` / `logo.dark.png` in the repo root. The CLI is still called `notion-md-to-pptx`.
+Ships with Soilytix light/dark themes (`theme.light.json`, `theme.dark.json`) and matching `logo.light.png` / `logo.dark.png` in the repo root.
 
 **Requirements:** [Node.js](https://nodejs.org/) 18+ (for `fetch`).
 
@@ -24,7 +24,7 @@ Ships with Soilytix light/dark themes (`theme.light.json`, `theme.dark.json`) an
 This downloads the latest `main` tree, installs npm dependencies, and links the CLI into `~/.local/bin` (adjust `INSTALL_DIR` / `BIN_DIR` if you prefer).
 
 ```bash
-INSTALL_DIR="${INSTALL_DIR:-$HOME/.local/share/notion-md-to-pptx}" \
+INSTALL_DIR="${INSTALL_DIR:-$HOME/.local/share/notion-slides}" \
 BIN_DIR="${BIN_DIR:-$HOME/.local/bin}" \
 REPO_TGZ="https://github.com/morris-frank/notion-slides/archive/refs/heads/main.tar.gz" \
 && TMP="$(mktemp -d)" && trap 'rm -rf "$TMP"' EXIT \
@@ -33,8 +33,8 @@ REPO_TGZ="https://github.com/morris-frank/notion-slides/archive/refs/heads/main.
 && mv "$TMP/notion-slides-main" "$INSTALL_DIR" \
 && (cd "$INSTALL_DIR" && npm ci --omit=dev) \
 && mkdir -p "$BIN_DIR" \
-&& ln -sf "$INSTALL_DIR/notion-md-to-pptx.mjs" "$BIN_DIR/notion-md-to-pptx" \
-&& chmod +x "$INSTALL_DIR/notion-md-to-pptx.mjs" \
+&& ln -sf "$INSTALL_DIR/notion-slides.mjs" "$BIN_DIR/notion-slides" \
+&& chmod +x "$INSTALL_DIR/notion-slides.mjs" \
 && echo "Installed to $INSTALL_DIR — ensure PATH includes $BIN_DIR, e.g. export PATH=\"$BIN_DIR:\$PATH\""
 ```
 
@@ -42,8 +42,8 @@ Themes and logos live next to the CLI in `INSTALL_DIR`; pass **`--theme`** as an
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
-notion-md-to-pptx deck.md \
-  --theme "$HOME/.local/share/notion-md-to-pptx/theme.light.json" \
+notion-slides deck.md \
+  --theme "$HOME/.local/share/notion-slides/theme.light.json" \
   --out deck.pptx
 ```
 
@@ -52,7 +52,7 @@ For the dark theme, use `theme.dark.json` instead.
 ## Usage (quick)
 
 ```bash
-node notion-md-to-pptx.mjs input.md --theme theme.light.json --out output.pptx
+node notion-slides.mjs input.md --theme theme.light.json --out output.pptx
 ```
 
 Flags include `--theme`, `--out`, `--cache <dir>`, `--offline`, `--debug-layout`.
@@ -75,7 +75,7 @@ Flags include `--theme`, `--out`, `--cache <dir>`, `--offline`, `--debug-layout`
 
 | Path | Role |
 |------|------|
-| `notion-md-to-pptx.mjs` | CLI |
+| `notion-slides.mjs` | CLI |
 | `theme.light.json` / `theme.dark.json` | Layout, colors, header/footer copy |
 | `logo.light.png` / `logo.dark.png` | Header logo (theme picks by light/dark) |
 | `examples/` | Sample Markdown |

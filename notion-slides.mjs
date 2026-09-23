@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Notion-style markdown → PowerPoint (single-file CLI). See spec.md.
- * Usage: node notion-md-to-pptx.mjs input.md --theme theme.json --out output.pptx
+ * Usage: node notion-slides.mjs input.md --theme theme.light.json --out output.pptx
  */
 
 import fs from 'fs';
@@ -38,9 +38,9 @@ function parseArgs(argv) {
     else if (!a.startsWith('-')) rest.push(a);
     else throw new Error(`Unknown flag: ${a}`);
   }
-  if (rest.length < 1) throw new Error('Usage: node notion-md-to-pptx.mjs input.md --theme theme.json --out output.pptx');
+  if (rest.length < 1) throw new Error('Usage: node notion-slides.mjs input.md --theme theme.light.json --out output.pptx');
   out.input = path.resolve(rest[0]);
-  if (!out.theme) throw new Error('Missing --theme theme.json');
+  if (!out.theme) throw new Error('Missing --theme theme.light.json');
   if (!out.output) throw new Error('Missing --out output.pptx');
   out.theme = path.resolve(out.theme);
   out.output = path.resolve(out.output);

@@ -1,5 +1,5 @@
 {
-  "name": "notion-markdown-slides",
+  "name": "notion-slides",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,11 +8,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pptx": "node notion-md-to-pptx.mjs",
-    "sample": "node notion-md-to-pptx.mjs examples/sample-deck.md --theme theme.json --out output.pptx"
+    "pptx": "node notion-slides.mjs",
+    "sample": "node notion-slides.mjs examples/sample-deck.md --theme theme.light.json --out output.pptx"
   },
   "bin": {
-    "notion-md-to-pptx": "notion-md-to-pptx.mjs"
+    "notion-slides": "notion-slides.mjs"
   },
   "keywords": [],
   "author": "",

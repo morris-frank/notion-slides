@@ -1,6 +1,21 @@
-# notion-md-to-pptx
+<img src="brand/icon/icon-notion-slides-on-obsidian-512.png" align="left" width="128" hspace="16" alt="notion-slides icon">
 
-Convert Notion-style Markdown to a `.pptx` deck (titles, bullets, code, math, callouts, images). Ships with **Soilytix** light/dark themes (`theme.light.json`, `theme.dark.json`) and matching **`logo.light.png` / `logo.dark.png`** in the repo root.
+<h3>notion-slides</h3>
+
+<p>
+  <sub>PASTE FROM NOTION, GET A DECK</sub>
+  <br>
+  <strong>Convert Notion-style Markdown into a themed <code>.pptx</code> deck: titles, bullets, code, math, callouts and images.</strong>
+  <br>
+  <br>
+  <img src="https://img.shields.io/badge/node-%E2%89%A518-8EDE3D?style=flat-square&amp;labelColor=16211B" alt="Node 18+">
+  <img src="https://img.shields.io/badge/output-.pptx-8EDE3D?style=flat-square&amp;labelColor=16211B" alt="pptx output">
+  <a href="theme.light.json"><img src="https://img.shields.io/badge/themes-light%20%2B%20dark-1AB172?style=flat-square&amp;labelColor=16211B" alt="Light and dark themes"></a>
+</p>
+
+<br clear="left">
+
+Ships with Soilytix light/dark themes (`theme.light.json`, `theme.dark.json`) and matching `logo.light.png` / `logo.dark.png` in the repo root. The CLI is still called `notion-md-to-pptx`.
 
 **Requirements:** [Node.js](https://nodejs.org/) 18+ (for `fetch`).
 
@@ -11,11 +26,11 @@ This downloads the latest `main` tree, installs npm dependencies, and links the 
 ```bash
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.local/share/notion-md-to-pptx}" \
 BIN_DIR="${BIN_DIR:-$HOME/.local/bin}" \
-REPO_TGZ="https://github.com/morris-frank/notion-md-to-pptx/archive/refs/heads/main.tar.gz" \
+REPO_TGZ="https://github.com/morris-frank/notion-slides/archive/refs/heads/main.tar.gz" \
 && TMP="$(mktemp -d)" && trap 'rm -rf "$TMP"' EXIT \
 && curl -fsSL "$REPO_TGZ" | tar -xz -C "$TMP" \
 && rm -rf "$INSTALL_DIR" \
-&& mv "$TMP/notion-md-to-pptx-main" "$INSTALL_DIR" \
+&& mv "$TMP/notion-slides-main" "$INSTALL_DIR" \
 && (cd "$INSTALL_DIR" && npm ci --omit=dev) \
 && mkdir -p "$BIN_DIR" \
 && ln -sf "$INSTALL_DIR/notion-md-to-pptx.mjs" "$BIN_DIR/notion-md-to-pptx" \
@@ -65,4 +80,3 @@ Flags include `--theme`, `--out`, `--cache <dir>`, `--offline`, `--debug-layout`
 | `logo.light.png` / `logo.dark.png` | Header logo (theme picks by light/dark) |
 | `examples/` | Sample Markdown |
 
-See `spec.md` for the full theme contract and behavior notes.
